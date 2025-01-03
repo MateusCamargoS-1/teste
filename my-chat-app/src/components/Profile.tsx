@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Container, Row, Col, Button, Card, Modal } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import perfil from "../assets/perfil.png";
@@ -8,8 +8,18 @@ const Profile = () => {
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
 
-  const handleShow = () => setShowModal(true);
+  const [user, setUser] = useState<any>(null);
 
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    } else {
+      navigate("/login");
+    }
+  }, [navigate]);
+
+  const handleShow = () => setShowModal(true);
   const handleClose = () => setShowModal(false);
 
   const handleChangePassword = () => {
@@ -34,6 +44,8 @@ const Profile = () => {
     handleClose(); 
   };
 
+  if (!user) return null;
+
   return (
     <>
       <Container className="mt-4" style={{ marginBottom: 70 }}>
@@ -51,7 +63,7 @@ const Profile = () => {
                     objectFit: "cover",
                   }}
                 />
-                <h4 className="mt-3">Tadalafela</h4>
+                <h4 className="mt-3">{user.name}</h4>
                 <p className="text-muted">
                   "Eu sou muito inteligente também, porque eu quero!"
                 </p>
@@ -67,13 +79,13 @@ const Profile = () => {
               <Card.Body>
                 <h5>Informações Pessoais</h5>
                 <p>
-                  <strong>Email:</strong> tadalafela@example.com
+                  <strong>Email:</strong> {user.email}
                 </p>
                 <p>
-                  <strong>Data de nascimento:</strong> 01 de Janeiro de 1990
+                  <strong>Data de nascimento:</strong> {new Date(user.birthDate).toLocaleDateString('pt-BR')}
                 </p>
                 <p>
-                  <strong>Localização:</strong> Campo Mourão, Paraná, Brasil
+                  <strong>Localização:</strong> {user.location}
                 </p>
               </Card.Body>
             </Card>
