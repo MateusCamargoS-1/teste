@@ -1,0 +1,72 @@
+/* Estilos personalizados para a tela de explorar */
+body {
+    background-color: #f0f2f5;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .card {
+    border-radius: 12px;
+  }
+  
+  .card img {
+    border-radius: 12px;
+    object-fit: cover;
+  }
+  
+  .card-body {
+    padding: 20px;
+  }
+  
+  .card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  
+  .card-text {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+  
+  button {
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+  
+  button:focus {
+    outline: none;
+  }
+  
+  input[type="text"] {
+    border-radius: 20px;
+    padding-left: 30px;
+  }
+  
+  input:focus {
+    box-shadow: none;
+  }
+  
+  .input-group-text {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+  }
+  
+  .card-body {
+    padding: 15px;
+  }
+  
+  .card .btn {
+    text-transform: uppercase;
+    font-weight: 500;
+    background-color: #4e66ff;
+    color: white;
+  }
+  
+  .card .btn:hover {
+    background-color: #3b55cc;
+  }
+  
+  .card .btn:focus {
+    outline: none;
+  }
+  

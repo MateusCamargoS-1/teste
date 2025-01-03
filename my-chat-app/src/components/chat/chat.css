@@ -1,0 +1,40 @@
+.chat-container {
+    background-color: #f1f3f5;
+    height: 100vh;
+  }
+  
+  .chat-messages {
+    padding: 15px;
+    background-color: #ffffff;
+    border-radius: 10px;
+  }
+  
+  .message {
+    margin-bottom: 15px;
+  }
+  
+  .sent-bubble {
+    background-color: #007bff;
+    color: white;
+    border-radius: 20px;
+    padding: 10px;
+    max-width: 70%;
+    display: inline-block;
+    text-align: left;
+    margin-left: auto;
+  }
+  
+  .received-bubble {
+    background-color: #e9ecef;
+    color: #495057;
+    border-radius: 20px;
+    padding: 10px;
+    max-width: 70%;
+    display: inline-block;
+    text-align: left;
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+  }
+  
