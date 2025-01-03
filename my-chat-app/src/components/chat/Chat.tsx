@@ -33,7 +33,7 @@ const Chat: React.FC<ChatProps> = ({ setChatUser }) => {
   };
 
   return (
-    <div className="chat-container" style={{ padding: '0', backgroundColor: '#F7F7F7', height: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div className="chat-container" style={{ padding: '0', backgroundColor: '#F7F7F7', display: 'flex', flexDirection: 'column' }}>
       
       <div className="header-chat" style={{
         position: 'fixed', 
@@ -63,9 +63,8 @@ const Chat: React.FC<ChatProps> = ({ setChatUser }) => {
 
       <div style={{
         flex: 1, 
-        overflowY: 'scroll', 
-        marginTop: '70px',
-        padding: '20px'
+        marginTop: '55px',
+        padding: ' 0 20px'
       }}>
         {messages.map((msg, index) => (
           <div key={index} style={{ marginBottom: '10px', textAlign: msg.startsWith('⠀') ? 'right' : 'left' }}>
