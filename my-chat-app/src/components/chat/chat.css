@@ -1,6 +1,7 @@
 .chat-container {
     background-color: #f1f3f5;
     height: 100vh;
+    padding: 0 !important;
   }
   
   .chat-messages {

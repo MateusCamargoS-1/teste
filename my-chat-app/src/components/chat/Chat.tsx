@@ -34,9 +34,23 @@ const Chat: React.FC<ChatProps> = ({ setChatUser }) => {
   };
 
   return (
-    <div className="chat-container" style={{ padding: '20px', backgroundColor: '#F7F7F7', height: '100vh', display: 'flex', flexDirection: 'column' }}>
-      {/* Cabeçalho */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingBottom: '10px', borderBottom: '1px solid #ddd' }}>
+    <div className="chat-container" style={{ padding: '0', backgroundColor: '#F7F7F7', height: '100vh', display: 'flex', flexDirection: 'column' }}>
+      
+      {/* Cabeçalho fixo */}
+      <div className="header-chat" style={{
+        position: 'fixed', 
+        top: 0, 
+        left: 0, 
+        right: 0, 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'space-between', 
+        paddingBottom: '10px', 
+        borderBottom: '1px solid #ddd', 
+        backgroundColor: '#FFF', 
+        zIndex: 1,
+        padding: '10px 20px'
+      }}>
         <IconButton onClick={handleBackClick}>
           <ArrowBackIcon />
         </IconButton>
@@ -49,8 +63,13 @@ const Chat: React.FC<ChatProps> = ({ setChatUser }) => {
         </IconButton>
       </div>
 
-      {/* Mensagens */}
-      <div style={{ flex: 1, overflowY: 'scroll', marginTop: '10px' }}>
+      {/* Seção de mensagens com scroll */}
+      <div style={{
+        flex: 1, 
+        overflowY: 'scroll', 
+        marginTop: '70px', // Para dar espaço abaixo do header fixo
+        padding: '20px'
+      }}>
         {messages.map((msg, index) => (
           <div key={index} style={{ marginBottom: '10px', textAlign: msg.startsWith('⠀') ? 'right' : 'left' }}>
             <Box
@@ -71,8 +90,20 @@ const Chat: React.FC<ChatProps> = ({ setChatUser }) => {
         ))}
       </div>
 
-      {/* Rodapé - Campo de mensagem */}
-      <div style={{ display: 'flex', alignItems: 'center', borderTop: '1px solid #ddd', paddingTop: '10px' }}>
+      {/* Rodapé fixo */}
+      <div className="footer-chat" style={{
+        position: 'fixed', 
+        bottom: 0, 
+        left: 0, 
+        right: 0, 
+        display: 'flex', 
+        alignItems: 'center', 
+        borderTop: '1px solid #ddd', 
+        backgroundColor: '#FFF', 
+        paddingTop: '10px', 
+        zIndex: 1,
+        padding: '10px 20px'
+      }}>
         <IconButton>
           <AttachmentIcon />
         </IconButton>
