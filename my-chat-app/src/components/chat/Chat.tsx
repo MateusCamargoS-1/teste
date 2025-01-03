@@ -9,8 +9,8 @@ import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
 import perfil from '../../assets/perfil.png';
 
 interface ChatProps {
+  user: string | null;
   setChatUser: React.Dispatch<React.SetStateAction<string | null>>;
-  isChatScreen: boolean;
 }
 
 const Chat: React.FC<ChatProps> = ({ setChatUser }) => {
