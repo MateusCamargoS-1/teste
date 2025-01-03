@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { TextField, IconButton, Box } from "@mui/material";
+import { TextField, IconButton, Box, Menu, MenuItem } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import AttachmentIcon from "@mui/icons-material/Attachment";
@@ -19,6 +19,7 @@ const Chat: React.FC<ChatProps> = ({ setChatUser }) => {
 
   const [message, setMessage] = useState<string>("");
   const [messages, setMessages] = useState<string[]>([]);
+  const [menuAnchor, setMenuAnchor] = useState<null | HTMLElement>(null);
 
   const sendMessage = () => {
     if (message.trim()) {
@@ -30,6 +31,24 @@ const Chat: React.FC<ChatProps> = ({ setChatUser }) => {
   const handleBackClick = () => {
     setChatUser(null);
     navigate("/chat");
+  };
+
+  const handleMenuOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setMenuAnchor(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setMenuAnchor(null);
+  };
+
+  const handleBlockUser = () => {
+    console.log("Usuário bloqueado");
+    handleMenuClose();
+  };
+
+  const handleDeleteUser = () => {
+    console.log("Usuário excluído");
+    handleMenuClose();
   };
 
   return (
@@ -70,9 +89,17 @@ const Chat: React.FC<ChatProps> = ({ setChatUser }) => {
           />
           <span style={{ fontWeight: "bold", fontSize: "16px" }}>{user}</span>
         </div>
-        <IconButton>
+        <IconButton onClick={handleMenuOpen}>
           <MoreVertIcon />
         </IconButton>
+        <Menu
+          anchorEl={menuAnchor}
+          open={Boolean(menuAnchor)}
+          onClose={handleMenuClose}
+        >
+          <MenuItem onClick={handleBlockUser}>Bloquear</MenuItem>
+          <MenuItem onClick={handleDeleteUser}>Excluir</MenuItem>
+        </Menu>
       </div>
 
       <div
@@ -136,7 +163,7 @@ const Chat: React.FC<ChatProps> = ({ setChatUser }) => {
           style={{ marginRight: "10px", borderRadius: "20px" }}
         />
         <IconButton onClick={sendMessage}>
-          <SendIcon/>
+          <SendIcon />
         </IconButton>
       </div>
     </div>
