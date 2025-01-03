@@ -1,26 +1,25 @@
-import { useState, useEffect } from 'react';
-import { Container, Row, Col, Button, Card, Modal } from 'react-bootstrap';
+import { useState } from 'react';
+import { Container, Row, Col, Button, Card, Modal, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import perfil from "../assets/perfil.png";
 import FooterMenu from "./FooterMenu";
 
 const Profile = () => {
   const [showModal, setShowModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [recado, setRecado] = useState('Eu sou muito inteligente também, porque eu quero!');
+  const [newRecado, setNewRecado] = useState('');
   const navigate = useNavigate();
-
-  const [user, setUser] = useState<any>(null);
-
-  useEffect(() => {
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    } else {
-      navigate("/login");
-    }
-  }, [navigate]);
 
   const handleShow = () => setShowModal(true);
   const handleClose = () => setShowModal(false);
+
+  const handleShowEditModal = () => {
+    setNewRecado(recado);
+    setShowEditModal(true);
+  };
+
+  const handleCloseEditModal = () => setShowEditModal(false);
 
   const handleChangePassword = () => {
     console.log('Alterar Senha');
@@ -44,7 +43,10 @@ const Profile = () => {
     handleClose(); 
   };
 
-  if (!user) return null;
+  const handleSaveRecado = () => {
+    setRecado(newRecado);
+    handleCloseEditModal();
+  };
 
   return (
     <>
@@ -63,11 +65,11 @@ const Profile = () => {
                     objectFit: "cover",
                   }}
                 />
-                <h4 className="mt-3">{user.name}</h4>
+                <h4 className="mt-3">Tadalafela</h4>
                 <p className="text-muted">
-                  "Eu sou muito inteligente também, porque eu quero!"
+                  {recado}
                 </p>
-                <Button variant="primary" size="sm" className="w-100">
+                <Button variant="primary" size="sm" className="w-100" onClick={handleShowEditModal}>
                   Editar Perfil
                 </Button>
               </Card.Body>
@@ -79,13 +81,13 @@ const Profile = () => {
               <Card.Body>
                 <h5>Informações Pessoais</h5>
                 <p>
-                  <strong>Email:</strong> {user.email}
+                  <strong>Email:</strong> tadalafela@example.com
                 </p>
                 <p>
-                  <strong>Data de nascimento:</strong> {new Date(user.birthDate).toLocaleDateString('pt-BR')}
+                  <strong>Data de nascimento:</strong> 01 de Janeiro de 1990
                 </p>
                 <p>
-                  <strong>Localização:</strong> {user.location}
+                  <strong>Localização:</strong> Campo Mourão, Paraná, Brasil
                 </p>
               </Card.Body>
             </Card>
@@ -107,6 +109,28 @@ const Profile = () => {
           </Col>
         </Row>
       </Container>
+
+      <Modal show={showEditModal} onHide={handleCloseEditModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Editar Perfil</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group controlId="formRecado">
+              <Form.Label>Recado</Form.Label>
+              <Form.Control
+                as="textarea"
+                rows={3}
+                value={newRecado}
+                onChange={(e) => setNewRecado(e.target.value)}
+              />
+            </Form.Group>
+            <Button variant="primary" className="w-100 mt-3" onClick={handleSaveRecado}>
+              Salvar
+            </Button>
+          </Form>
+        </Modal.Body>
+      </Modal>
 
       <Modal show={showModal} onHide={handleClose}>
         <Modal.Header closeButton>
