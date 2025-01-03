@@ -155,7 +155,6 @@ const Messages: React.FC<MessagesProps> = ({ setChatUser }) => {
                 <Grid item xs={12} sm={6} md={4} key={message.id}>
                   <Card
                     className={classes.messageCard}
-                    onClick={() => handleChatClick(message.name)}
                     style={{ borderRadius: 15 }}
                   >
                     <Avatar
@@ -163,7 +162,7 @@ const Messages: React.FC<MessagesProps> = ({ setChatUser }) => {
                       src={perfil}
                       className={classes.avatar}
                     />
-                    <CardContent className={classes.cardContent}>
+                    <CardContent className={classes.cardContent} onClick={() => handleChatClick(message.name)}>
                       <Typography variant="h6" className={classes.name}>
                         {message.name}
                       </Typography>
