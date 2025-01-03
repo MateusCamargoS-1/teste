@@ -19,8 +19,8 @@ const useStyles = makeStyles({
     borderRadius: "20px",
     boxShadow: "0 2px 10px rgba(0, 0, 0, 0.15)",
     transition: "all 0.3s ease",
-    marginLeft: "15px", // Adicionando margem nas laterais
-    marginRight: "15px", // Adicionando margem nas laterais
+    marginLeft: "15px",
+    marginRight: "15px",
     "&:hover": {
       cursor: "pointer",
       boxShadow: "0 4px 20px rgba(0, 0, 0, 0.2)",
@@ -42,7 +42,7 @@ const useStyles = makeStyles({
     textOverflow: "ellipsis",
     whiteSpace: "nowrap",
     marginTop: 4,
-    maxWidth: "200px", // Limite de largura para a última mensagem
+    maxWidth: "200px",
   },
   moreButton: {
     marginLeft: "auto",
@@ -75,7 +75,7 @@ const Messages: React.FC<MessagesProps> = ({ setChatUser }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [selectedUser, setSelectedUser] = React.useState<string | null>(null);
-  const navigate = useNavigate(); // Usando useNavigate para navegar entre as telas
+  const navigate = useNavigate();
 
   const messages = [
     {
@@ -91,7 +91,7 @@ const Messages: React.FC<MessagesProps> = ({ setChatUser }) => {
       name: "Ciclano",
       lastMessage: "Tech geek, procurando alguém para trocar ideias.",
     },
-    // Adicione mais mensagens conforme necessário
+
   ];
 
   const handleMenuClick = (
@@ -108,19 +108,13 @@ const Messages: React.FC<MessagesProps> = ({ setChatUser }) => {
   };
 
   const handleChatClick = (userName: string) => {
-    setChatUser(userName); // Salva o usuário do chat
-    navigate(`/chat/${userName}`); // Redireciona para a tela do chat
+    setChatUser(userName);
+    navigate(`/chat/${userName}`);
   };
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
   };
-
-  // Adicionando o useEffect para atualizar a tela quando for navegada
-  useEffect(() => {
-    // Aqui você pode resetar ou limpar qualquer estado se necessário.
-    // Exemplo: setSelectedUser(null) se precisar resetar o menu
-  }, []); // Esse array vazio garante que a função seja chamada apenas uma vez quando o componente for montado
 
   return (
     <>
@@ -132,7 +126,6 @@ const Messages: React.FC<MessagesProps> = ({ setChatUser }) => {
           alignItems: "center",
         }}
       >
-        {/* Título com ícone e busca */}
         <div className={classes.titleContainer}>
           <TextField
             variant="outlined"
@@ -162,12 +155,12 @@ const Messages: React.FC<MessagesProps> = ({ setChatUser }) => {
                 <Grid item xs={12} sm={6} md={4} key={message.id}>
                   <Card
                     className={classes.messageCard}
-                    onClick={() => handleChatClick(message.name)} // Redireciona para a tela de chat
+                    onClick={() => handleChatClick(message.name)}
                     style={{ borderRadius: 15 }}
                   >
                     <Avatar
                       alt={message.name}
-                      src={perfil} // Substitua com a URL da foto do usuário
+                      src={perfil}
                       className={classes.avatar}
                     />
                     <CardContent className={classes.cardContent}>

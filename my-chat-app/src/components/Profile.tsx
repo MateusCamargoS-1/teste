@@ -1,16 +1,14 @@
-import React from "react";
 import { Container, Row, Col, Button, Card } from "react-bootstrap";
 
 import perfil from "../assets/perfil.png";
 import FooterMenu from "./FooterMenu";
 
-const Profile: React.FC = () => {
+const Profile = () => {
   return (
     <>
       <Container className="mt-4" style={{ marginBottom: 70 }}>
         <Row>
           <Col md={4}>
-            {/* Card de foto de perfil */}
             <Card className="text-center border-0">
               <Card.Body className="perfil">
                 <img
@@ -34,7 +32,6 @@ const Profile: React.FC = () => {
             </Card>
           </Col>
 
-          {/* Informações adicionais e interações */}
           <Col md={8}>
             <Card className="shadow-sm mb-4">
               <Card.Body>

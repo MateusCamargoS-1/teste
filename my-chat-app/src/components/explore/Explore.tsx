@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Container,
   Row,
@@ -13,7 +13,7 @@ import "./explore.css";
 import perfil from "../../assets/perfil.png";
 import FooterMenu from "../FooterMenu";
 
-const Explore: React.FC = () => {
+const Explore = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const users = [
     {
@@ -32,7 +32,6 @@ const Explore: React.FC = () => {
       name: "Ciclano",
       bio: "Tech geek e gamer. Buscando criar algo inovador na área de IA.",
     },
-    // Adicione mais usuários aqui
   ];
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -43,7 +42,6 @@ const Explore: React.FC = () => {
     <>
       <Container className="mt-4" style={{ marginBottom: 70 }}>
         <Row>
-          {/* Barra de pesquisa */}
           <Col md={12}>
             <InputGroup className="mb-4">
               <InputGroup.Text>
@@ -57,8 +55,6 @@ const Explore: React.FC = () => {
               />
             </InputGroup>
           </Col>
-
-          {/* Cards de usuários */}
           <Col md={12}>
             <Row xs={1} sm={2} md={2} lg={2} className="g-4">
               {users
@@ -69,7 +65,6 @@ const Explore: React.FC = () => {
                   <Col key={index}>
                     <Card className="shadow-sm border-0 rounded">
                       <Card.Body className="text-center">
-                        {/* Foto de perfil com bordas arredondadas */}
                         <div className="mb-3">
                           <img
                             src={perfil}
@@ -82,7 +77,6 @@ const Explore: React.FC = () => {
                             }}
                           />
                         </div>
-                        {/* Nome e Bio do usuário */}
                         <Card.Title>{user.name}</Card.Title>
                         <Card.Text
                           className="text-muted"

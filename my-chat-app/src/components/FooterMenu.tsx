@@ -1,8 +1,7 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Navbar, Nav } from 'react-bootstrap';
 
-const FooterMenu: React.FC = () => {
+const FooterMenu = () => {
   return (
     <Navbar id="footer-nav" fixed="bottom" bg="dark" variant="dark">
       <Container className="justify-content-center">

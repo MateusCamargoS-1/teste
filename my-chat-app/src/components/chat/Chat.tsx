@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Button, TextField, IconButton, Box } from '@mui/material';
+import { TextField, IconButton, Box } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import AttachmentIcon from '@mui/icons-material/Attachment';
@@ -14,7 +14,7 @@ interface ChatProps {
 }
 
 const Chat: React.FC<ChatProps> = ({ setChatUser }) => {
-  const { user } = useParams();  // Obtém o parâmetro 'user' da URL
+  const { user } = useParams();
   const navigate = useNavigate();
 
   const [message, setMessage] = useState<string>('');
@@ -27,16 +27,14 @@ const Chat: React.FC<ChatProps> = ({ setChatUser }) => {
     }
   };
 
-   // Função para voltar para a tela de mensagens
    const handleBackClick = () => {
-    setChatUser(null); // Limpa o estado do usuário do chat
-    navigate('/chat'); // Navega para a tela de mensagens
+    setChatUser(null);
+    navigate('/chat'); 
   };
 
   return (
     <div className="chat-container" style={{ padding: '0', backgroundColor: '#F7F7F7', height: '100vh', display: 'flex', flexDirection: 'column' }}>
       
-      {/* Cabeçalho fixo */}
       <div className="header-chat" style={{
         position: 'fixed', 
         top: 0, 
@@ -63,11 +61,10 @@ const Chat: React.FC<ChatProps> = ({ setChatUser }) => {
         </IconButton>
       </div>
 
-      {/* Seção de mensagens com scroll */}
       <div style={{
         flex: 1, 
         overflowY: 'scroll', 
-        marginTop: '70px', // Para dar espaço abaixo do header fixo
+        marginTop: '70px',
         padding: '20px'
       }}>
         {messages.map((msg, index) => (
@@ -90,7 +87,6 @@ const Chat: React.FC<ChatProps> = ({ setChatUser }) => {
         ))}
       </div>
 
-      {/* Rodapé fixo */}
       <div className="footer-chat" style={{
         position: 'fixed', 
         bottom: 0, 
